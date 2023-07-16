@@ -7,7 +7,7 @@ public sealed class LiteralExpressionSyntax : ExpressionSyntax
     }
 
     public SyntaxToken LiteralToken { get; }
-    public override SyntaxKind Kind => SyntaxKind.NumberExpression;
+    public override SyntaxKind Kind => SyntaxKind.LiteralExpression;
 
     public override IEnumerable<SyntaxNode> GetChildren()
     {
