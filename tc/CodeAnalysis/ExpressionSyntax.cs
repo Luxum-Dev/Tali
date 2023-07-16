@@ -1,4 +1,4 @@
-public class ExpressionSyntax : SyntaxNode
+class ExpressionSyntax : SyntaxNode
 {
     public override SyntaxKind Kind => throw new NotImplementedException();
 

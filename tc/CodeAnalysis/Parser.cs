@@ -1,4 +1,4 @@
-internal sealed class Parser
+class Parser
 {
     private readonly SyntaxToken[] _tokens;
     private int _position;
@@ -46,7 +46,7 @@ internal sealed class Parser
         return current;
     }
 
-    private SyntaxToken MatchToken(SyntaxKind kind)
+    private SyntaxToken Match(SyntaxKind kind)
     {
         if (Current.Kind == kind)
         {
@@ -56,16 +56,16 @@ internal sealed class Parser
         return new SyntaxToken(kind, Current.Position, null, null);
     }
 
-    public SyntaxTree Parse()
-    {
-        var expression = ParseExpression();
-        var endOfFileToken = MatchToken(SyntaxKind.EndOfFileToken);
-        return new SyntaxTree(_diagnostics, expression, endOfFileToken);
-    }
-
     private ExpressionSyntax ParseExpression()
     {
         return ParseTerm();
+    }
+
+    public SyntaxTree Parse()
+    {
+        var expression = ParseTerm();
+        var endOfFileToken = Match(SyntaxKind.EndOfFileToken);
+        return new SyntaxTree(_diagnostics, expression, endOfFileToken);
     }
 
     private ExpressionSyntax ParseTerm()
@@ -102,11 +102,10 @@ internal sealed class Parser
         {
             var left = NextToken();
             var expression = ParseExpression();
-            var right = MatchToken(SyntaxKind.CloseParenthesisToken);
+            var right = Match(SyntaxKind.CloseParenthesisToken);
             return new ParenthesizedExpressionSyntax(left, expression, right);
         }
-
-        var numberToken = MatchToken(SyntaxKind.NumberToken);
-        return new LiteralExpressionSyntax(numberToken);
+        var numberToken = Match(SyntaxKind.NumberToken);
+        return new NumberExpressionSyntax(numberToken);
     }
 }

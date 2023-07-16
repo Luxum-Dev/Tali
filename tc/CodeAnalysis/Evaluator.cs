@@ -1,4 +1,5 @@
-public class Evaluator
+
+class Evaluator
 {
     private readonly ExpressionSyntax _root;
     public Evaluator(ExpressionSyntax root)
@@ -13,9 +14,9 @@ public class Evaluator
 
     private int EvaluateExpression(ExpressionSyntax node)
     {
-        if (node is LiteralExpressionSyntax n)
+        if (node is NumberExpressionSyntax n)
         {
-            return (int)n.LiteralToken.Value;
+            return (int)n.NumberToken.Value;
         }
 
         if (node is BinaryExpressionSyntax b)

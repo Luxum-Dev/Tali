@@ -1,4 +1,4 @@
-﻿var showTree = false;
+﻿bool showTree = false;
 while (true)
 {
     Console.Write("> ");
@@ -22,9 +22,10 @@ while (true)
 
     if (showTree)
     {
+        var color = Console.ForegroundColor;
         Console.ForegroundColor = ConsoleColor.Gray;
         PrettyPrint(syntaxTree.Root);
-        Console.ResetColor();
+        Console.ForegroundColor = color;
     }
 
     if (!syntaxTree.Diagnostics.Any())
@@ -35,6 +36,7 @@ while (true)
     }
     else
     {
+        var color = Console.ForegroundColor;
         Console.ForegroundColor = ConsoleColor.Red;
 
         foreach (var diagnostic in syntaxTree.Diagnostics)
@@ -42,7 +44,7 @@ while (true)
             Console.WriteLine(diagnostic);
         }
 
-        Console.ResetColor();
+        Console.ForegroundColor = color;
     }
 }
 

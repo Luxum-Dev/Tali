@@ -1,4 +1,4 @@
-internal sealed class Lexer
+class Lexer
 {
     private readonly string _text;
     private int _position;
