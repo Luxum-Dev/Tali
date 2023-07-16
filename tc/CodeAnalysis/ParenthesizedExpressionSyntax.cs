@@ -1,4 +1,4 @@
-public sealed class ParenthesizedExpressionSyntax : ExpressionSyntax
+sealed class ParenthesizedExpressionSyntax : ExpressionSyntax
 {
     public ParenthesizedExpressionSyntax(SyntaxToken openParenthesisToken, ExpressionSyntax expression, SyntaxToken closeParenthesisToken)
     {

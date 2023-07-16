@@ -1,4 +1,4 @@
-public abstract class SyntaxNode
+abstract class SyntaxNode
 {
     public abstract SyntaxKind Kind { get; }
 

@@ -1,4 +1,4 @@
-public sealed class SyntaxToken : SyntaxNode
+class SyntaxToken : SyntaxNode
 {
     public SyntaxToken(SyntaxKind kind, int position, string? text, object? value)
     {
